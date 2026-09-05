@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tersa</title>
+  <meta name="description" content="Tersa, from the Latin tersus: wiped clean. Small tools by Vince that remove what you never asked for. Home of BraveDebloater." />
+  <meta name="theme-color" content="#121212" />
+  <link rel="canonical" href="https://tersa.tech/" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tersa.tech/" />
+  <meta property="og:title" content="Tersa" />
+  <meta property="og:description" content="From the Latin tersus: wiped clean. Small tools that remove what you never asked for." />
+  <meta property="og:image" content="https://tersa.tech/assets/og.png" />
+  <meta property="og:image:alt" content="Tersa mark" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tersa" />
+  <meta name="twitter:description" content="From the Latin tersus: wiped clean. Small tools that remove what you never asked for." />
+  <meta name="twitter:image" content="https://tersa.tech/assets/og.png" />
+  <link rel="preload" href="/assets/fonts/geist-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/geist-sans-500.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/geist-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/site.css" />
+  <noscript><style>.reveal{opacity:1!important;animation:none!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header>
+    <a class="brand" href="/">
+      <img src="/assets/tersa-mark-white.png" width="22" height="22" alt="" />
+      <span class="wordmark">Tersa</span>
+    </a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="https://github.com/osfv" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <canvas class="contour" aria-hidden="true"></canvas>
+    <div class="hero-copy reveal">
+      <h1>Tersa.</h1>
+      <p class="lede">From the Latin <em>tersus</em>: wiped clean. Small tools by Vince that remove what you never asked for.</p>
+      <a class="btn" href="#work">See the work</a>
+    </div>
+    <div class="mark-wrap reveal">
+      <img src="/assets/tersa-mark-white.png" width="440" height="440" alt="Tersa mark" />
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="work-head">
+      <div class="reveal">
+        <h2>BraveDebloater</h2>
+        <p class="facts mono">Windows, macOS, Linux. PowerShell. MIT.</p>
+      </div>
+      <div class="work-copy reveal">
+        <p>Strips Rewards, Wallet, VPN, Leo, News and telemetry out of Brave using the browser's own enterprise policies. It previews every change first and writes a backup before it applies anything.</p>
+        <a href="https://github.com/osfv/BraveDebloater" target="_blank" rel="noopener">Open the repo</a>
+      </div>
+    </div>
+    <figure class="shot reveal">
+      <div class="shot-bar mono" aria-hidden="true">
+        <span>pwsh &mdash; Invoke-BraveDebloat.ps1 -Preset Extreme</span>
+        <span>dry-run</span>
+      </div>
+      <div class="shot-body">
+        <img src="/assets/work/dry-run.png" width="1024" height="420" loading="lazy" alt="BraveDebloater dry-run output. Each line reads Would set, then a policy name and value with a plain explanation, ending with: Dry-run complete. 36 policy values planned, no changes were made." />
+      </div>
+      <figcaption class="mono">Every line explains itself. 36 policies planned, nothing written until you pass -Apply.</figcaption>
+    </figure>
+  </section>
+
+  <footer>
+    <a class="foot-home mono" href="/">tersa.tech</a>
+    <div class="foot-links">
+      <a href="https://github.com/osfv" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/oxcipity" target="_blank" rel="noopener">X</a>
+      <a href="https://iqad.me" target="_blank" rel="noopener">iqad.me</a>
+      <a href="mailto:hi@iqad.baby">Email</a>
+    </div>
+  </footer>
+
+  <script src="/site.js" defer></script>
+</body>
+</html>
