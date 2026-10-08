@@ -122,7 +122,7 @@
 
   // Scroll reveal for sections below the hero.
   (() => {
-    const els = [...document.querySelectorAll(".work .reveal")];
+    const els = [...document.querySelectorAll(".work .reveal, .studio .reveal")];
     if (!els.length) return;
     if (reduce || !("IntersectionObserver" in window)) {
       els.forEach((e) => e.classList.add("in"));
