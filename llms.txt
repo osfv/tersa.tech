@@ -12,7 +12,7 @@ Tersa is a non-commercial project run by Vince, a private individual in Hungary.
 ## Site
 
 - [Home](https://tersa.tech/): What Tersa makes and how to reach it
-- [Privacy policy](https://tersa.tech/privacy/): The site collects nothing; covers email, hosting and GDPR rights
+- [Privacy policy](https://tersa.tech/privacy/): No cookies, analytics or tracking; covers hosting, email and GDPR rights
 - [Terms](https://tersa.tech/terms/): Licenses, warranty, liability and trademarks
 - [Imprint](https://tersa.tech/imprint/): Operator and hosting details
 
