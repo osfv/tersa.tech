@@ -1,0 +1,60 @@
+name: Deploy site
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Every third day, to refresh the BraveDebloater star count.
+    - cron: '17 5 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Copy the site
+        run: rsync -a --exclude='.*' --exclude='README.md' ./ _site/
+
+      - name: Fill in the BraveDebloater star count
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          stars="$(gh api repos/osfv/BraveDebloater --jq .stargazers_count)" || stars=''
+          if [[ ! "$stars" =~ ^[0-9]+$ ]]; then
+            echo "::warning::Could not read the BraveDebloater star count. The site keeps the number committed in index.html."
+            exit 0
+          fi
+          shown="$(sed ':a;s/\B[0-9]\{3\}\>/,&/;ta' <<< "$stars")"
+          sed -i -E "s|(<span data-stars>)[0-9,]+(</span>)|\1${shown}\2|" _site/index.html
+          grep -qF "<span data-stars>${shown}</span>" _site/index.html
+          echo "BraveDebloater: ${shown} stars"
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
