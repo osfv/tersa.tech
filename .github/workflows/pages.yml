@@ -50,6 +50,18 @@ jobs:
           grep -qF "<span data-stars>${shown}</span>" _site/index.html
           echo "BraveDebloater: ${shown} stars"
 
+      - name: Fill in the BraveDebloater Scorecard score
+        run: |
+          score="$(curl -fsS https://api.scorecard.dev/projects/github.com/osfv/BraveDebloater | jq -r .score)" || score=''
+          if [[ ! "$score" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "::warning::Could not read the BraveDebloater Scorecard score. The site keeps the number committed in index.html."
+            exit 0
+          fi
+          shown="$(printf '%.1f' "$score")"
+          sed -i -E "s|(<span data-scorecard>)[0-9.]+(</span>)|\1${shown}\2|" _site/index.html
+          grep -qF "<span data-scorecard>${shown}</span>" _site/index.html
+          echo "BraveDebloater: Scorecard ${shown}/10"
+
       - name: Upload site
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
